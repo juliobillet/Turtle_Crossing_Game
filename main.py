@@ -12,6 +12,7 @@ RIVER_POSITIONS = ((0, -200), (0, -60), (0, 80), (0, 220))
 # GLOBAL VARIABLES.
 rivers = {}
 game_over = False
+move_speed = 0.1
 
 # CREATING THE SCREEN FROM THE TURTLE MODULE SCREEN OBJECT.
 screen = Screen()
@@ -39,11 +40,11 @@ screen.onkeypress(player.go_down, "Down")
 
 # MAIN LOOP OF THE GAME, ITS CORE WHILE LOOP.
 while not game_over:
-    time.sleep(0.1)
     screen.update()
     scoreboard.update_score()
-    trunks.move_trunks(scoreboard.score)
+    trunks.move_trunks()
     trunks.reset_trunks()
+
     for trunk in trunks.trunks:
         if trunk.ycor() - 20 < player.ycor() < trunk.ycor() + 20 and \
                 trunk.xcor() - 30 < player.xcor() < trunk.xcor() + 30:
@@ -52,6 +53,9 @@ while not game_over:
     if player.is_past_finish_line():
         scoreboard.level_passed()
         player.reset_player()
+        move_speed -= 0.03
+
+    time.sleep(move_speed)
 
 # EXIT ON CLICK IF NECESSARY.
 screen.exitonclick()

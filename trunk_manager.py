@@ -21,7 +21,7 @@ TRUNK_POSSIBLE_Y_POS = [-240, -239, -238, -237, -236, -235, -234, -233, -232, -2
                         257, 258, 259, 260]
 COLORS = ["saddle brown", "sienna", "peru", "brown"]
 STARTING_MOVE_DISTANCE = 5
-MOVE_INCREMENT = 5
+MOVE_INCREMENT = 5  # Not used in this format, because for me, using the time.sleep method makes the game more fluid.
 
 
 class TrunkManager:
@@ -43,9 +43,9 @@ class TrunkManager:
             all_trunks.append(new_turtle)
         return all_trunks
 
-    def move_trunks(self, score):
+    def move_trunks(self):
         for trunk in self.trunks:
-            trunk.backward(STARTING_MOVE_DISTANCE + (MOVE_INCREMENT * (score - 1)))
+            trunk.backward(STARTING_MOVE_DISTANCE)
 
     def reset_trunks(self):
         for trunk in self.trunks:
