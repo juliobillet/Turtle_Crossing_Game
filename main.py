@@ -45,11 +45,14 @@ while not game_over:
     trunks.move_trunks()
     trunks.reset_trunks()
 
+    # DETECT COLLISION OF THE PLAYER WITH THE TRUNKS. IF SO: GAME OVER.
     for trunk in trunks.trunks:
         if trunk.ycor() - 20 < player.ycor() < trunk.ycor() + 20 and \
                 trunk.xcor() - 30 < player.xcor() < trunk.xcor() + 30:
             game_over = True
             scoreboard.game_over()
+
+    # DETECT IF PLAYER IS PAST THE FINISH LINE. IF SO: RESET PLAYER, INCREASE LEVEL AND SPEED UP THE GAME/TRUNKS.
     if player.is_past_finish_line():
         scoreboard.level_passed()
         player.reset_player()
