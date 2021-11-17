@@ -13,7 +13,7 @@ class Player(Turtle):
         self.color("green")
         self.penup()
         self.setheading(90)
-        self.setpos(STARTING_POSITION)
+        self.reset_player()
 
     def go_up(self):
         if self.ycor() < FINISH_LINE_Y:
